@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add notes to user (Admin)</title>
+</head>
+<body>
+<form action="#" th:action="@{/user/addNotes-post}" th:object="${addNote}" method="post">
+    <label for="id">user id</label>
+    <input type="number" th:field="*{id}" id="id" placeholder="id">
+    <label for="note_ids">note id</label>
+    <input type="number" th:field="*{note_ids}" id="note_ids" placeholder="note_id">
+    <input type="submit" value="Create User">
+</form>
+</body>
+</html>

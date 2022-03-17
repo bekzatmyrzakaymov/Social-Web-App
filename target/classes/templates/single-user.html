@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+        <h2>User</h2>
+        <table border="5px">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>name</th>
+                <th>surname</th>
+                <th>email</th>
+                <th>password</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr object="${user}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.secondName}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+                <td><a th:href="@{/user/delete-get/{email}(email=${user.email})}">Delete</a></td>
+            </tr>
+            </br>
+            <a th:href="@{/note/createNote-get/{id}(id=${user.id})}">Create note</a>
+            </br>
+            </tbody>
+            <tbody>
+            <div th:switch="${notes}">
+                <h2 th:case="null"></h2>
+                <div th:case="*">
+                    <h2></h2>
+                    <table border="5px">
+                        <thead>
+                        <tr>
+                            <th>note_id</th>
+                            <th>content</th>
+                            <th>date</th>
+                            <th>note</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="note : ${user.notes}">
+                            <td th:text="${note.note_id}"></td>
+                            <td th:text="${note.content}"></td>
+                            <td th:text="${note.date}"></td>
+                            <td><a th:href="@{/note/note-update/{note_id}(note_id=${note.note_id})}">Update</a></td>
+                            <td><a th:href="@{/note/delete-get/{content}/{user.id}(content=${note.content},user.id =${user.id})}">Delete</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </tbody>
+        </table>
+</body>
+</html>

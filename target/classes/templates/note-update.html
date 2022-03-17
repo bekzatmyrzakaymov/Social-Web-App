@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Note update</title>
+</head>
+<body>
+<form action="#" th:action="@{/note/note-update-post}" th:object="${note}" method="post">
+    <label for="note_id">Note ID</label>
+    <input readonly type="number" th:field="*{note_id}" id="note_id" placeholder="note_id">
+    <br/>
+    <label for="content">Content</label>
+    <input type="text" th:field="*{content}" id="content" placeholder="Content">
+    <br/>
+   <!-- <label for="date">Date</label>
+    <input readonly type="text" th:field="*{date}" id="date" placeholder="Date">
+    <br/> -->
+    <input type="submit" value="Update note">
+</form>
+</body>
+</html>
