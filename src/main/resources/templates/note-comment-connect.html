@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Connect comm</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/comm/createComm-post/{user_id}/{id}(id=${note.note_id},user_id=${user.id})}" th:method="post">
+
+    <label for="content">Content</label>
+    <input type="text" th:field="${comm.content}" id="content" placeholder="Content">
+    <input type="submit" value="Create Comment">
+</form>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/profile.css"  th:href="@{/css/profile.css}">
+
+    <!-- Main css -->
+</head>
+<body style="background-color: #93c164">
+
+<div class="container">
+    <div class="main-body">
+
+        <!-- Breadcrumb -->
+        <nav aria-label="breadcrumb" class="main-breadcrumb">
+            <ol class="breadcrumb">
+<!--                <li class="breadcrumb-item"><a th:href="@{/user/profile}">Profile</a></li>-->
+<!--                <li class="breadcrumb-item"><a th:href="@{/user/productall}">Food</a></li>-->
+<!--                <li class="breadcrumb-item"><a th:href="@{/user/sportall}">Sport</a></li>-->
+<!--                <li class="breadcrumb-item"><a th:href="@{/logout}">Log out</a></li>-->
+<!--                <li class="breadcrumb-item"><a th:href="@{/user/n}">Sign in</a></li>-->
+                <li class="breadcrumb-item">Profile</li>
+                <li class="breadcrumb-item">LogOut</li>
+            </ol>
+        </nav>
+        <!-- /Breadcrumb -->
+
+        <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3" object="${user}">
+                                <h4 th:text="${user.firstName}"> </h4>
+                                <h4 th:text="${user.secondName}"> [[${user.secondName}]]</h4>
+                                <p class="text-secondary mb-1">Welcome to your profile!</p>
+                                <button class="btn btn-primary" style="background-color: forestgreen; border: forestgreen; color: white;">
+                                    <a th:href="@{/user/friendsall}"  style="color: white">User list</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mt-3"  >
+                    <div class="mb-3" >
+                        <div class=" h-100 w-100"  >
+                            <div th:each="inf, itemStat : *{user.friends}" class = "d-flex justify-content-around">
+
+                                <p th:text="${inf.getEmail()}">Azamat Rustemov</p>
+                                <p><a th:href="@{delProducts/{id} (id =${inf.id})}" style="background-color: forestgreen; border: #3f7622; color: white;" class="btn btn-danger" role="button">Delete</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div  class="card mb-3">
+                    <div class="card-body" object="${user}">
+                        <div class="row" >
+                            <div class="col-sm-3" >
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div  th:text="${user.firstName}" class="col-sm-9 text-secondary">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Second Name</h6>
+                            </div>
+                            <div th:text="${user.secondName}" class="col-sm-9 text-secondary" >
+
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div  th:text="${user.email}" class="col-sm-9 text-secondary">
+
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a th:href="@{/user/delete-get/{email}(email=${user.email})}">Edit</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row gutters-sm">
+
+
+
+
+
+                    <div th:switch="${notes}"  class="col-12 mb-3">
+                        <h2 th:case="null"></h2>
+                        <div class="card h-100 "  object="${user}">
+<!--                            <div th:case="*" class="card-body">-->
+<!--                                <p><a th:href="@{/note/createNote-get/{id}(id=${user.id})}">Create note</a></p>-->
+<!--                                <div th:each="note : ${user.notes}">-->
+<!--                                    <p th:text="${note.note_id}">Post Id: </p>-->
+<!--                                    <p th:text="${note.content}">Content: </p>-->
+<!--                                    <p th:text="${note.date}"> Date:</p>-->
+<!--                                        <p th:text="${note.comments}">-->
+<!--                                            Comment:-->
+<!--                                        </p>-->
+<!--                                        <p><a class="comment" th:href="@{/comm/createComm-get/{user.id}/{note.id}(user.id=${user.id}, note.id=${note.note_id})}">Create comment </a>-->
+<!--                                            <a th:href="@{/note/note-update/{note_id}(note_id=${note.note_id})}">Update Post/</a>-->
+<!--                                            <a th:href="@{/note/delete-get/{content}/{user.id}(content=${note.content},user.id =${user.id})}">Delete Post/</a>-->
+<!--                                        </p>-->
+<!--                                 -->
+
+<!--                                </div>-->
+                                <table  >
+                                    <thead>
+                                    <tr>
+                                        <th> <a th:href="@{/note/createNote-get/{id}(id=${user.id})}">Create Post</a></th>
+                                        <th>Content</th>
+                                        <th>Date</th>
+                                        <th>Comment</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody th:each="note : ${user.notes}">
+                                        <td th:text="${note.note_id}"> </td>
+                                        <td th:text="${note.content}" > </td>
+                                        <td th:text="${note.date}"></td>
+                             <td th:text="${note.comments}">Comment:</td>
+                                  <tr>
+                                      <td><a class="comment" th:href="@{/comm/createComm-get/{user.id}/{note.id}(user.id=${user.id}, note.id=${note.note_id})}">Create comment</a></td>
+                                      <td><a th:href="@{/note/note-update/{note_id}(note_id=${note.note_id})}">Update</a></td>
+                                      <td><a th:href="@{/note/delete-get/{content}/{user.id}(content=${note.content},user.id =${user.id})}">Delete</a></td>
+                                  </tr>
+
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    </tbody>
+                    <tbody>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<script>
+    let commentLink = document.querySelector('.comment');
+    let disableButton = document.querySelector('.disableButton');
+
+    function disableLink(){
+        commentLink.style.pointerEvents = 'none'
+        commentLink.style.cursor = 'default'
+    };
+
+    disableButton.addEventListener("click", ()=> {
+        disableLink()
+        console.log('fsdfasfa')
+    })
+</script>
+</body>
+</html>

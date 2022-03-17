@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=en xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Add User</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/listpro.css"  th:href="@{/css/listpro.css}">
+
+    <!-- Main css -->
+</head>
+<body>
+
+<div class="main-body" style="padding: 15px; background-color:#3f7622 ">
+
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table" >
+
+
+                    <div class="row" th:each = "users : ${userRequest}">
+                        <div class="cell" data-title="Age" th:text="${users.firstName}">
+
+                        </div>
+                        <div class="cell" data-title="Job Title" th:text="${users.secondName}">
+
+                        </div>
+                        <div class="cell" data-title="Job Title" th:text="${users.id}">
+
+                        </div>
+                        <div class="cell" data-title="Full Name">
+                            <a href="#" th:href="@{addFriend/{id} (id=${users.id})}" style="background-color: #3f7622; border: #3f7622" class="btn btn-primary">Follow</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

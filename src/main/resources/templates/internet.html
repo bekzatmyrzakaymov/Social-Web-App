@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>User list (Admin)</title>
+</head>
+<body>
+<div th:switch="${users}">
+    <h2 th:case="null"></h2>
+    <div th:case="*">
+        <h2>Users</h2>
+        <table border="5px">
+            <thead>
+            <tr>
+                <th>name</th>
+                <th>surname</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.firstName}"></td>
+                <td th:text="${user.secondName}"></td>
+                <td th:text="${user.notes}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
